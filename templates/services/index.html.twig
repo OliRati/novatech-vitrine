@@ -8,6 +8,15 @@
 <main>
     <div class="main-wrapper">
         <h1>Services</h1>
+
+        <ul>
+            {% for service in services %}
+            <li>
+                <h2>{{ service.title }}</h2>
+                <p>{{ service.description }}</p>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 </main>
 
