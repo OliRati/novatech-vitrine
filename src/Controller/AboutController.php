@@ -11,8 +11,13 @@ final class AboutController extends AbstractController
     #[Route('/about', name: 'app_about')]
     public function index(): Response
     {
+        $about = [
+            'description' => 'NovaTech est une entreprise spécialisée dans le développement web et le conseil technique. Nous aidons les PME à réussir leur transformation digitale.',
+            'year' => date('Y')
+        ];
+
         return $this->render('about/index.html.twig', [
-            'controller_name' => 'AboutController',
+            'about' => $about,
         ]);
     }
 }
