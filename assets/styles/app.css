@@ -40,12 +40,7 @@ a {
  */
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background-color: rgba(48, 48, 48, 0.8);
-    backdrop-filter: blur(0.2rem);
+    background-color: rgb(80, 80, 80);
     color: white;
     width: 100vw;
 }
@@ -58,7 +53,8 @@ header {
 
     ul {
         display: flex;
-        gap: 2rem;
+        align-items: center;
+        gap: 1rem;
 
         li {
             padding: 1rem;
@@ -81,7 +77,6 @@ header {
  */
 
 main {
-    padding-top: 5rem;
 }
 
 .main-wrapper {
@@ -102,7 +97,7 @@ h2 {
 
 p {
     margin: 1rem 0;
-    font-size: 1rem;
+    font-size: 1.4rem;
 }
 
 /*
@@ -110,7 +105,8 @@ p {
  */
 
 footer {
-    padding: 3rem 0;
+    background-color: rgb(80, 80, 80);
+    padding: 1rem 0;
 
     p {
         text-align: center;
