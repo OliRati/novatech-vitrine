@@ -1,5 +1,15 @@
 ### How to run this Symfony Web Application
 
+- Clone this repository
+
+- go to repository directory
+
+- Restore dependencies with
+
+```bash
+composer update
+```
+
 As a simple user you need to define a directory accessible to you for storing php sessions.
 
 For example create ~/php_sessions directory using command :
