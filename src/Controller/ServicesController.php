@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Service;
 use App\Form\ServiceType;
+use App\Repository\ServiceRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,26 +15,29 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ServicesController extends AbstractController
 {
     #[Route('/services', name: 'app_services')]
-    public function index(): Response
+    public function index(ServiceRepository $serviceRepository): Response
     {
+        $services = $serviceRepository->findAll();
+        /*
         $services = [
             [
-                'title' => 'Développement web',
+                'name' => 'Développement web',
                 'description' => 'Création de sites et applications web modernes et performants.'
             ],
             [
-                'title' => 'Conseil technique',
+                'name' => 'Conseil technique',
                 'description' => 'Accompagnement dans vos choix technologiques et architectures.'
             ],
             [
-                'title' => 'Audit de code',
+                'name' => 'Audit de code',
                 'description' => 'Analyse de la qualité, sécurité et maintenabilité de vos projets.'
             ],
             [
-                'title' => 'Maintenance applicative',
+                'name' => 'Maintenance applicative',
                 'description' => 'Suivi, corrections et évolutions de vos applications existantes.'
             ]
         ];
+        */
 
         return $this->render('services/index.html.twig', [
             'services' => $services,
@@ -57,5 +61,20 @@ final class ServicesController extends AbstractController
         return $this->render('services/new.html.twig', [
             'form' => $form
         ]);
+    }
+
+    #[Route('/services/edit', 'edit_services')]
+    public function edit() {
+
+    }
+
+    #[Route('/services/view', 'view_services')]
+    public function view() {
+
+    }
+
+    #[Route('/services/del', 'del_services')]
+    public function del() {
+
     }
 }
