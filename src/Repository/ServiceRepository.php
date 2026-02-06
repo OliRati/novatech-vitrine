@@ -16,6 +16,22 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
 
+    public function findAllOrderByDateDesc() : array
+    {
+        return $this->createQueryBuilder('a')
+        ->orderBy('a.createdAt','DESC')
+        ->getQuery()
+        ->getResult();
+    }
+
+    public function findAllOrderByDateAsc() : array
+    {
+        return $this->createQueryBuilder('a')
+        ->orderBy('a.createdAt','ASC')
+        ->getQuery()
+        ->getResult();
+    }
+
     //    /**
     //     * @return Service[] Returns an array of Service objects
     //     */

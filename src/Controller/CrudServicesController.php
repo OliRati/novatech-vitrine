@@ -14,10 +14,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class CrudServicesController extends AbstractController
 {
-        #[Route('/crud_services', name: 'crud_services')]
-    public function index(ServiceRepository $serviceRepository): Response
+    #[Route('/crud_services/order/{order}', name: 'crud_services')]
+    public function index(ServiceRepository $serviceRepository, string $order): Response
     {
-        $services = $serviceRepository->findAll();
+        $services = $order === "dsc" ? $serviceRepository->findAllOrderByDateDesc()
+        : $serviceRepository->findAllOrderByDateAsc();
+
+        /* $services = $serviceRepository->findAll(); */
+
         /*
         $services = [
             [
@@ -55,7 +59,7 @@ final class CrudServicesController extends AbstractController
             $service->setCreatedAt(new DateTimeImmutable());
             $em->persist($service);
             $em->flush();
-            return $this->redirectToRoute('crud_services');
+            return $this->redirectToRoute('crud_services', ['order' => 'asc']);
         }
 
         return $this->render('crud_services/new.html.twig', [
@@ -64,14 +68,15 @@ final class CrudServicesController extends AbstractController
     }
 
     #[Route('/crud_services/edit/{id}', 'edit_services')]
-    public function edit(Request $req, EntityManagerInterface $em, Service $service) {
+    public function edit(Request $req, EntityManagerInterface $em, Service $service)
+    {
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
             $service->setCreatedAt(new DateTimeImmutable());
             $em->persist($service);
             $em->flush();
-            return $this->redirectToRoute('crud_services');
+            return $this->redirectToRoute('crud_services', ['order' => 'asc']);
         }
 
         return $this->render('crud_services/edit.html.twig', [
@@ -80,9 +85,10 @@ final class CrudServicesController extends AbstractController
     }
 
     #[Route('/crud_services/del/{id}', 'del_services')]
-    public function del(EntityManagerInterface $em, Service $service) {
+    public function del(EntityManagerInterface $em, Service $service)
+    {
         $em->remove($service);
         $em->flush();
-        return $this->redirectToRoute('crud_services');
+        return $this->redirectToRoute('crud_services', ['order' => 'asc']);
     }
 }

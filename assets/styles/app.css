@@ -155,7 +155,8 @@ table {
     border-collapse: collapse;
     margin: 0 auto;
 
-    a {
+    .button-small-warm,
+    .button-small {
         background-color: lightgreen;
         padding: 0.4rem;
         color: black;
@@ -163,8 +164,17 @@ table {
         text-decoration: none;
     }
 
-    a:hover {
+    .button-small-warm:hover,
+    .button-small:hover {
         background-color: #44ffa7;
+    }
+
+    .button-small-warm {
+        background-color: lightsalmon;
+    }
+
+    .button-small-warm:hover {
+        background-color: lightcoral;
     }
 
     thead {
@@ -187,6 +197,15 @@ td {
 td,
 th {
     padding: 1rem;
+}
+
+th {
+    text-align: left;
+}
+
+.ordering {
+    display: flex;
+    align-items: center;
 }
 
 /*

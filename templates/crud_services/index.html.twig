@@ -19,30 +19,38 @@
 					<tr>
 						<th scope="col">Titre</th>
 						<th scope="col">Description</th>
-						<th scope="col">Date création</th>
+						<th scope="col" class="ordering">
+							<a href="{{ path('crud_services', {'order':'asc'}) }}">
+								<img src="{{ asset('img/arrow_upward_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg') }}" alt="Ascending">
+							</a>
+							Date création
+							<a href="{{ path('crud_services', {'order':'dsc'}) }}">
+								<img src="{{ asset('img/arrow_downward_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg') }}" alt="Descending">
+							</a>
+						</th>
 						<th scope="col">Actif</th>
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
-				<tbody>
-					{% for service in services %}
-						<tr class="table-active">
-							<th scope="row">{{ service.name }}</th>
-							<td>{{ service.description }}</td>
-							<td>{{ service.createdAt|date("m/d/Y", "Europe/Paris") }}</td>
-							<td>{{ service.isActive ? 'X' : '' }}</td>
-							<td>
-								<a href="{{ path('edit_services', {'id':service.id}) }}">Editer</a>
-								<a href="{{ path('del_services', {'id':service.id}) }}" onclick="return confirm('Supprimer cet élément ?');">Supprimer</a>
-							</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-
-		</div>
-	</main>
-
-	{% include 'partials/_footer.html.twig' %}
-
-{% endblock %}
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for service in services %}
+			<tr>
+				<th scope="row">{{ service.name }}</th>
+				<td>{{ service.description }}</td>
+				<td>{{ service.createdAt|date("m/d/Y H:i", "Europe/Paris") }}</td>
+				<td>
+					{% if service.isActive %}
+						<img src="{{ asset('img/check_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg') }}" alt="Check mark">
+					{% endif %}
+				</td>
+				<td>
+					<a class="button-small" href="{{ path('edit_services', {'id':service.id}) }}">Editer</a>
+					<a class="button-small-warm" href="{{ path('del_services', {'id':service.id}) }}" onclick="return confirm('Supprimer cet élément ?');">Supprimer</a>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table></div></main>{% include 'partials/_footer.html.twig' %}{% endblock %}
