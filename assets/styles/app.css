@@ -100,6 +100,18 @@ p {
     font-size: 1.4rem;
 }
 
+.title {
+    font-size: 1.5rem;
+    color: antiquewhite;
+}
+
+.content {
+    font-size: 1.2rem;
+    color: #CCC;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+}
+
 /*
  * Footer settings
  */

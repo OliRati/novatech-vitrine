@@ -43,46 +43,4 @@ final class ServicesController extends AbstractController
             'services' => $services,
         ]);
     }
-
-    #[Route('/services/new', 'new_services')]
-    public function new(Request $req, EntityManagerInterface $em)
-    {
-        $service = new Service();
-
-        $form = $this->createForm(ServiceType::class, $service);
-        $form->handleRequest($req);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $service->setCreatedAt(new DateTimeImmutable());
-            $em->persist($service);
-            $em->flush();
-            return $this->redirectToRoute('app_services');
-        }
-
-        return $this->render('services/new.html.twig', [
-            'form' => $form
-        ]);
-    }
-
-    #[Route('/services/edit/{id}', 'edit_services')]
-    public function edit(Request $req, EntityManagerInterface $em, Service $service) {
-        $form = $this->createForm(ServiceType::class, $service);
-        $form->handleRequest($req);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $service->setCreatedAt(new DateTimeImmutable());
-            $em->persist($service);
-            $em->flush();
-            return $this->redirectToRoute('app_services');
-        }
-
-        return $this->render('services/edit.html.twig', [
-            'form' => $form
-        ]);
-    }
-
-    #[Route('/services/del/{id}', 'del_services')]
-    public function del(EntityManagerInterface $em, Service $service) {
-        $em->remove($service);
-        $em->flush();
-        return $this->redirectToRoute('app_services');
-    }
 }

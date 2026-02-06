@@ -8,37 +8,15 @@
 
 	<main>
 		<div class="main-wrapper">
-			<h1>Services</h1>
-
-			<a href="{{ path('new_services') }}">Ajouter un service</a>
-
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="col">Titre</th>
-						<th scope="col">Description</th>
-						<th scope="col">Date création</th>
-						<th scope="col">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for service in services %}
-						<tr class="table-active">
-							<th scope="row">{{ service.name }}</th>
-							<td>{{ service.description }}</td>
-							<td>{{ service.createdAt|date("m/d/Y", "Europe/Paris") }}</td>
-							<td>
-								<a href="{{ path('edit_services', {'id':service.id}) }}">Editer</a>
-								<a href="{{ path('del_services', {'id':service.id}) }}">Supprimer</a>
-							</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-
+			<h1>Nos Services</h1>
+			{% for service in services %}
+				<p class="title">{{ service.name }}</p>
+				<p class="content">{{ service.description }}</p>
+			{% else %}
+				<p class="title">Aucun service n'a été défini.</p>
+			{% endfor %}
 		</div>
 	</main>
 
 	{% include 'partials/_footer.html.twig' %}
-
 {% endblock %}
