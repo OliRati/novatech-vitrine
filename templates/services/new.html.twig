@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ServicesController!
+{% endblock %}
+
+{% block body %}
+
+	{% include 'partials/_header.html.twig' %}
+
+	<main>
+		<div class="main-wrapper">
+			<h1>Ajouter un service</h1>
+			{{ form_start(form) }}
+			{{ form_row(form) }}
+			<button>Ajouter</button>
+			{{ form_end(form) }}
+		</div>
+	</main>
+
+	{% include 'partials/_footer.html.twig' %}
+
+{% endblock %}
