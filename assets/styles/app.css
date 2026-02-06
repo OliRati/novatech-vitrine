@@ -114,3 +114,44 @@ footer {
 
     ;
 }
+
+/*
+ * Table CSS
+ */
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+
+    a {
+        background-color: lightgreen;
+        padding: 0.4rem;
+        color: black;
+        border-radius: 0.2rem;
+        text-decoration: none;
+    }
+
+    a:hover {
+        background-color: #44ffa7;
+    }
+
+    thead {
+        background-color: #654565;
+    }
+    tbody {
+        tr:nth-child(2n) {
+            background-color: #454545;
+        }
+    }
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+}
+
+td,
+th {
+    padding: 1rem;
+}

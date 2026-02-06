@@ -28,7 +28,6 @@
 							<td>{{ service.description }}</td>
 							<td>{{ service.createdAt|date("m/d/Y", "Europe/Paris") }}</td>
 							<td>
-								<a href="{{ path('view_services', {'id':service.id}) }}">Afficher</a>
 								<a href="{{ path('edit_services', {'id':service.id}) }}">Editer</a>
 								<a href="{{ path('del_services', {'id':service.id}) }}">Supprimer</a>
 							</td>
