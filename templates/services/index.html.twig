@@ -10,8 +10,10 @@
 		<div class="main-wrapper">
 			<h1>Nos Services</h1>
 			{% for service in services %}
-				<p class="title">{{ service.name }}</p>
-				<p class="content">{{ service.description }}</p>
+				{% if service.isActive %}
+					<p class="title">{{ service.name }}</p>
+					<p class="content">{{ service.description }}</p>
+				{% endif %}
 			{% else %}
 				<p class="title">Aucun service n'a été défini.</p>
 			{% endfor %}

@@ -18,6 +18,7 @@
 						<th scope="col">Titre</th>
 						<th scope="col">Description</th>
 						<th scope="col">Date création</th>
+                        <th scope="col">Actif</th>
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
@@ -27,6 +28,7 @@
 							<th scope="row">{{ service.name }}</th>
 							<td>{{ service.description }}</td>
 							<td>{{ service.createdAt|date("m/d/Y", "Europe/Paris") }}</td>
+                            <td>{{ service.isActive ? 'X' : '' }}</td>
 							<td>
 								<a href="{{ path('edit_services', {'id':service.id}) }}">Editer</a>
 								<a href="{{ path('del_services', {'id':service.id}) }}">Supprimer</a>
