@@ -23,9 +23,6 @@ class Service
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\Column]
-    private ?bool $isActive = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -63,18 +60,6 @@ class Service
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function isActive(): ?bool
-    {
-        return $this->isActive;
-    }
-
-    public function setIsActive(bool $isActive): static
-    {
-        $this->isActive = $isActive;
 
         return $this;
     }
