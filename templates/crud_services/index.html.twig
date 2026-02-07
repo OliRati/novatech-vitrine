@@ -20,13 +20,16 @@
 						<th scope="col">Titre</th>
 						<th scope="col">Description</th>
 						<th scope="col" class="ordering">
-							<a href="{{ path('crud_services', {'order':'asc'}) }}">
-								<img src="{{ asset('img/arrow_upward_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg') }}" alt="Ascending">
-							</a>
 							Date création
-							<a href="{{ path('crud_services', {'order':'dsc'}) }}">
-								<img src="{{ asset('img/arrow_downward_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg') }}" alt="Descending">
-							</a>
+							{% if order %}
+								<a href="{{ path('crud_services', {'order':'dsc'}) }}">
+									<img src="{{ asset('img/arrow_downward_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg') }}" alt="Descending">
+								</a>
+							{% else %}
+								<a href="{{ path('crud_services', {'order':'asc'}) }}">
+									<img src="{{ asset('img/arrow_upward_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg') }}" alt="Ascending">
+								</a>
+							{% endif %}
 						</th>
 						<th scope="col">Actif</th>
 						<th scope="col">Actions</th>

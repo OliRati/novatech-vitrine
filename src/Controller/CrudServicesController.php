@@ -45,6 +45,7 @@ final class CrudServicesController extends AbstractController
 
         return $this->render('crud_services/index.html.twig', [
             'services' => $services,
+            'order' => $order === "dsc" ? false : true
         ]);
     }
 
