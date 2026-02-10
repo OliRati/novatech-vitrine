@@ -83,7 +83,7 @@ mkdir ~/php_sessions
 Then run the Symfony project with following command :
 
 ```bash
-php -d session.save_path=~/php_sessions -S 127.0.0.1:8000 -t public public/index.php
+php -d session.save_path=${HOME}/php_sessions -S 127.0.0.1:8000 -t public public/index.php
 ```
 
 ##### For Windows
